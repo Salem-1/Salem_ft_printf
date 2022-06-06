@@ -6,12 +6,19 @@
 /*   By: ahsalem <ahsalem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 22:13:36 by ahsalem           #+#    #+#             */
-/*   Updated: 2022/06/05 20:31:00 by ahsalem          ###   ########.fr       */
+/*   Updated: 2022/06/06 15:51:17 by ahsalem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
+static int	print_percent()
+{
+	int a;
 
+	a = '%';
+	write(1, &a, 1);
+	return (1);
+}
 int	ft_printf(const char *s, ...)
 {
 	int result;
@@ -27,15 +34,20 @@ int	ft_printf(const char *s, ...)
 	{
 		if (s[i] == '%')
 		{
-			len += param_checker(&s[i + 1], va_arg(ptr, void *));
-			if (s[i + 1])
-				i++;
+			i++;
+			if (s[i] == '%')
+				len += (print_percent());
+			else
+				len += param_checker(&s[i], va_arg(ptr, void *));
+		
 		}
 		else
 		{
 			write(1, &s[i], 1);
 			len++;
 		}
+		if (!s[i + 1])
+				break;
 		i++;
 	}
 	va_end(ptr);

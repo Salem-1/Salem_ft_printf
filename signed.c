@@ -6,11 +6,11 @@
 /*   By: ahsalem <ahsalem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 22:47:36 by ahsalem           #+#    #+#             */
-/*   Updated: 2022/06/05 22:49:17 by ahsalem          ###   ########.fr       */
+/*   Updated: 2022/06/06 10:07:54 by ahsalem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft/libft.h"
+#include"ft_printf.h"
 
 static signed int	num_order(signed int n);
 static signed int	ten_pow(signed int c);

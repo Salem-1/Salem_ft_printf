@@ -6,21 +6,21 @@
 /*   By: ahsalem <ahsalem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 19:53:17 by ahsalem           #+#    #+#             */
-/*   Updated: 2022/06/06 09:18:43 by ahsalem          ###   ########.fr       */
+/*   Updated: 2022/06/06 15:43:01 by ahsalem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
-static int	print_percent();
+// static int	print_percent();
 static int	print_char(char c);
 static int print_string(char * arg);
 
 int param_checker(const char *s, void *arg)
 {
-	if (*s == '%')
-		return (print_percent());
-	else if (*s == 'c')
+	// if (*s == '%')
+	// 	return (print_percent());
+	if (*s == 'c')
 		return (print_char((char)arg));
 	else if (*s == 'i')
 		return (print_int((int)arg));
@@ -31,25 +31,34 @@ int param_checker(const char *s, void *arg)
 	else if (*s == 'u')
 		return (print_unsigned((unsigned int)arg));
 	else if (*s == 'x')
-		return (print_hex((unsigned long)arg, 0));
+		return (print_hex((unsigned int)arg, 0));
 	else if (*s == 'X')
-		return (print_hex((unsigned long)arg, 1));
+		return (print_hex((unsigned int)arg, 1));
 	else if (*s == 'p')
-		return (print_hex((unsigned long long)arg, 2));
+		return (print_ptr((unsigned long )arg, 2));
 	return (0);
 }
 
 static int print_string(char * arg)
 {
+	if (!arg)
+	{
+		write(1, "(null)", 6);
+		return (6);
+	}
+
 	ft_putstr(arg);
 	return((int)ft_strlen(arg));
 }
 
-static int	print_percent()
-{
-	write(1, "%", 1);
-	return (1);
-}
+// static int	print_percent()
+// {
+// 	int a;
+
+// 	a = '%';
+// 	write(1, &a, 1);
+// 	return (1);
+// }
 
 static int	print_char(char c)
 {

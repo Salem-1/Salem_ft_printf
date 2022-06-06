@@ -6,7 +6,7 @@
 /*   By: ahsalem <ahsalem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 12:22:08 by ahsalem           #+#    #+#             */
-/*   Updated: 2022/05/31 08:20:21 by ahsalem          ###   ########.fr       */
+/*   Updated: 2022/06/06 10:43:23 by ahsalem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 size_t	ft_strlen(const char *s)
 {
 	size_t	i;
-
+	
+	if (!s)
+		return (0);
 	i = 0;
 	while (s[i])
 		i++;

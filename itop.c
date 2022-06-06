@@ -1,66 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   itoh.c                                             :+:      :+:    :+:   */
+/*   itop.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahsalem <ahsalem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 07:53:14 by ahsalem           #+#    #+#             */
-/*   Updated: 2022/06/06 14:26:30 by ahsalem          ###   ########.fr       */
+/*   Updated: 2022/06/06 15:28:42 by ahsalem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <limits.h>
 
-static int	num_order(unsigned int n);
-static int	sixteen_pow(unsigned int c);
-static char	*specials(unsigned int n, int flag);
-static char	*str_result(unsigned int pow, char *result,
-				unsigned int n, int flag);
+static int	num_order(unsigned long n);
+static unsigned long	sixteen_pow(unsigned long c);
+static char	*specials(unsigned long n, int flag);
+static char	*str_result(unsigned long pow, char *result,
+				unsigned long n, int flag);
 
-char	*ft_itoh(unsigned int n, int flag)
+char	*ft_itop(unsigned long n, int flag)
 {
-	unsigned int	i;
+	unsigned long	i;
 	char			*result;
-	unsigned int	temp;
-	unsigned int	pow;
+	unsigned long	temp;
+	unsigned long	pow;
 
 	temp = 1;
 	i = 0;
 	if (n == 0)
 		return (specials(n, flag));
-	if (flag == 2)
-		result = malloc(sizeof(char) * (num_order(n) + 3));
-	else
-		result = malloc(sizeof(char) * (num_order(n) + 1));
+	result = malloc(sizeof(char) * (num_order(n) + 3));
 	if (result == NULL)
 		return (NULL);
 	i = 0;
+	
 	pow = sixteen_pow(num_order(n));
-	if (flag == 0)
-		return (str_result(pow, result, n, 0));
-	else if (flag == 1)
-		return (str_result(pow, result, n, 1));
-	else
-		return (str_result(pow, result, n, 2));
-	return (0);
+	// printf("inside itop %lu\n", pow);
+	return (str_result(pow, result, n, 2));
 }
 
-static char	*str_result(unsigned int pow, char *result,
-	unsigned int n, int flag)
+static char	*str_result(unsigned long pow, char *result,
+	unsigned long n, int flag)
 {
-	unsigned int	i;
+	unsigned long	i;
 
-	if (flag == 2)
-	{
-		result[0] = '0';
-		result[1] = 'x';
-		i = 2;
-		flag = 0;
-	}
-	else
-		i = 0;
+	result[0] = '0';
+	result[1] = 'x';
+	i = 2;
+	flag = 0;
 	while (pow > 0)
 	{
 		result[i] = n / pow % 16;
@@ -77,35 +65,40 @@ static char	*str_result(unsigned int pow, char *result,
 	return (result);
 }
 
-static int	num_order(unsigned int n)
+static int	num_order(unsigned long n)
 {
-	unsigned int	i;
+	int	i;
 
 	i = 0;
+	// if(n == LONG_MAX)
+	// 	return(19);
 	while (n > 0)
 	{
 		n /= 16;
 		i++;
 	}
+	
 	return (i);
 }
 
-static int	sixteen_pow(unsigned int c)
+static unsigned long	sixteen_pow(unsigned long c)
 {
-	unsigned int	i;
-	unsigned int	result;
+	unsigned long	i;
+	unsigned long	result;
 
 	i = 0;
 	result = 1;
+	
 	while (i < (c - 1))
 	{
 		result *= 16;
 		i++;
 	}
+//	printf("sixteen to the power is %lu\n", result);
 	return (result);
 }
 
-static char	*specials(unsigned int n, int flag)
+static char	*specials(unsigned long n, int flag)
 {
 	char	*result;
 

@@ -6,7 +6,7 @@
 /*   By: ahsalem <ahsalem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 22:11:25 by ahsalem           #+#    #+#             */
-/*   Updated: 2022/06/04 22:22:37 by ahsalem          ###   ########.fr       */
+/*   Updated: 2022/06/06 10:43:43 by ahsalem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	ft_putstr(const char *s)
 	int	i;
 
 	i = 0;
+	if (!s)
+		write(1, "\0", 1);
 	while (s[i])
 	{
 		write(1, &s[i], 1);

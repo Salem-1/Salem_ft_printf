@@ -6,67 +6,67 @@
 /*   By: ahsalem <ahsalem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 20:15:55 by ahsalem           #+#    #+#             */
-/*   Updated: 2022/06/06 08:11:47 by ahsalem          ###   ########.fr       */
+/*   Updated: 2022/06/06 15:09:26 by ahsalem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 int	num_order(int n);
 
-int print_hex(unsigned long n, int flag)
+int print_hex(unsigned int n, int flag)
 {
+	int len;
 	char *result;
+	
 	result = ft_itoh(n, flag);
 	ft_putstr(result);
+	len = (int)ft_strlen(result);
 	free(result);
-	return(num_order(n));
+	return(len);
+}
+int print_ptr(unsigned long n, int flag)
+{
+	int len;
+
+	char *result;
+	result = ft_itop(n, flag);
+	ft_putstr(result);
+	len = (int)ft_strlen(result);
+	free(result);
+	return(len);
 }
 
 int print_unsigned(unsigned int n)
 {
-	char *result;
+	char	*result;
+	int		len;
 	result = ft_unsigned_itoa(n);
 	ft_putstr(result);
+	len = (int)ft_strlen(result);
 	free(result);
-	return(num_order(n));
+	return(len);
 }
 int print_int(int n)
 {
-	char *result;
-	
+	char	*result;
+	int		len;
 	result = ft_itoa(n);
 	ft_putstr(result);
+	len = (int)ft_strlen(result);
 	free(result);
-	return(num_order(n));	
+	return(len);
 }
 
 int print_digit(signed int n)
 {
 	char *result;
-	
+	int		len;
+
 	result = ft_signed_itoa(n);
 	ft_putstr(result);
+	len = (int)ft_strlen(result);
 	free(result);
-	return(num_order(n));	
+	return(len);
 }
 
-/*return the length of the integer or digit*/
-int	num_order(int n)
-{
-	int	i;
-
-	if (n < 0)
-	{
-		n *= -1;
-		i = 1;
-	}
-	else
-		i = 0;
-	while (n > 0)
-	{
-		n /= 10;
-		i++;
-	}
-	return (i);
-}

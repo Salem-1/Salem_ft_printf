@@ -6,15 +6,15 @@
 /*   By: ahsalem <ahsalem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 20:55:01 by ahsalem           #+#    #+#             */
-/*   Updated: 2022/06/05 21:01:32 by ahsalem          ###   ########.fr       */
+/*   Updated: 2022/06/06 12:00:30 by ahsalem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft/libft.h"
+#include "ft_printf.h"
 
 static unsigned int	num_order(unsigned int n);
 static unsigned int	ten_pow(unsigned int c);
-static char	*specials();
+static char	*specials(unsigned int n);
 static char	*str_result(unsigned int pow, unsigned int i, char *result, unsigned int n);
 
 char	*ft_unsigned_itoa(unsigned int n)
@@ -26,8 +26,8 @@ char	*ft_unsigned_itoa(unsigned int n)
 
 	temp = 1;
 	i = 0;
-	if (n == 0)
-		return (specials());
+	if (n == 0 || n == 4294967295)
+		return (specials(n));
 	result = malloc(sizeof(char) * (num_order(n) + 1));
 	if (result == NULL)
 		return (NULL);
@@ -77,12 +77,16 @@ static unsigned int	ten_pow(unsigned int c)
 	return (result);
 }
 
-static char	*specials()
+static char	*specials(unsigned int n)
 {
 	char	*result;
-
-	result = (char *)malloc(sizeof(char ) * 2);
-	result[0] = '0';
-	result[1] = '\0';
+	if (n == 0)
+	{
+	result = ft_strdup("0");
+	}
+	else
+	{
+		result = ft_strdup("4294967295");
+	}
 	return (result);
 }
