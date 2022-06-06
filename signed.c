@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   signed.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahsalem <ahsalem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/15 20:34:36 by ahsalem           #+#    #+#             */
-/*   Updated: 2022/06/05 20:53:54 by ahsalem          ###   ########.fr       */
+/*   Created: 2022/06/05 22:47:36 by ahsalem           #+#    #+#             */
+/*   Updated: 2022/06/05 22:49:17 by ahsalem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include"libft/libft.h"
 
-static int	num_order(int n);
-static int	ten_pow(int c);
-static char	*specials(int c);
-static char	*str_result(int pow, int i, char *result, int n);
+static signed int	num_order(signed int n);
+static signed int	ten_pow(signed int c);
+static char	*specials(signed int c);
+static char	*str_result(signed int pow, signed int i, char *result, signed int n);
 
-char	*ft_itoa(int n)
+char	*ft_signed_itoa(signed int n)
 {
-	int		i;
+	signed int		i;
 	char	*result;
-	int		temp;
-	int		pow;
+	signed int		temp;
+	signed int		pow;
 
 	temp = 1;
 	i = 0;
@@ -43,7 +43,7 @@ char	*ft_itoa(int n)
 	return (str_result(pow, i, result, n));
 }
 
-static char	*str_result(int pow, int i, char *result, int n)
+static char	*str_result(signed int pow, signed int i, char *result, signed int n)
 {
 	while (pow > 0)
 	{
@@ -55,9 +55,9 @@ static char	*str_result(int pow, int i, char *result, int n)
 	return (result);
 }
 
-static int	num_order(int n)
+static signed int	num_order(signed int n)
 {
-	int	i;
+	signed int	i;
 
 	if (n < 0)
 	{
@@ -74,10 +74,10 @@ static int	num_order(int n)
 	return (i);
 }
 
-static int	ten_pow(int c)
+static signed int	ten_pow(signed int c)
 {
-	int	i;
-	int	result;
+	signed int	i;
+	signed int	result;
 
 	i = 0;
 	result = 1;
@@ -89,7 +89,7 @@ static int	ten_pow(int c)
 	return (result);
 }
 
-static char	*specials(int c)
+static char	*specials(signed int c)
 {
 	char	*result;
 

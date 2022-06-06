@@ -1,49 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   unsigned.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahsalem <ahsalem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/15 20:34:36 by ahsalem           #+#    #+#             */
-/*   Updated: 2022/06/05 20:53:54 by ahsalem          ###   ########.fr       */
+/*   Created: 2022/06/05 20:55:01 by ahsalem           #+#    #+#             */
+/*   Updated: 2022/06/05 21:01:32 by ahsalem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "./libft/libft.h"
 
-static int	num_order(int n);
-static int	ten_pow(int c);
-static char	*specials(int c);
-static char	*str_result(int pow, int i, char *result, int n);
+static unsigned int	num_order(unsigned int n);
+static unsigned int	ten_pow(unsigned int c);
+static char	*specials();
+static char	*str_result(unsigned int pow, unsigned int i, char *result, unsigned int n);
 
-char	*ft_itoa(int n)
+char	*ft_unsigned_itoa(unsigned int n)
 {
-	int		i;
+	unsigned  int		i;
 	char	*result;
-	int		temp;
-	int		pow;
+	unsigned int		temp;
+	unsigned int		pow;
 
 	temp = 1;
 	i = 0;
-	if (n == 0 || n == -2147483648)
-		return (specials(n));
+	if (n == 0)
+		return (specials());
 	result = malloc(sizeof(char) * (num_order(n) + 1));
 	if (result == NULL)
 		return (NULL);
-	if (n < 0)
-	{
-		result[0] = '-';
-		n *= -1;
-		i = 1;
-	}
 	else
 		i = 0;
 	pow = ten_pow(num_order(n));
 	return (str_result(pow, i, result, n));
 }
 
-static char	*str_result(int pow, int i, char *result, int n)
+static char	*str_result(unsigned int pow, unsigned int i, char *result, unsigned int n)
 {
 	while (pow > 0)
 	{
@@ -55,17 +49,11 @@ static char	*str_result(int pow, int i, char *result, int n)
 	return (result);
 }
 
-static int	num_order(int n)
+static unsigned int	num_order(unsigned int n)
 {
-	int	i;
+	unsigned int	i;
 
-	if (n < 0)
-	{
-		n *= -1;
-		i = 1;
-	}
-	else
-		i = 0;
+	i = 0;
 	while (n > 0)
 	{
 		n /= 10;
@@ -74,10 +62,10 @@ static int	num_order(int n)
 	return (i);
 }
 
-static int	ten_pow(int c)
+static unsigned int	ten_pow(unsigned int c)
 {
-	int	i;
-	int	result;
+	unsigned int	i;
+	unsigned int	result;
 
 	i = 0;
 	result = 1;
@@ -89,20 +77,12 @@ static int	ten_pow(int c)
 	return (result);
 }
 
-static char	*specials(int c)
+static char	*specials()
 {
 	char	*result;
 
-	if (c == 0)
-	{
-		result = (char *)malloc(sizeof(char ) * 2);
-		result[0] = '0';
-		result[1] = '\0';
-	}
-	else
-	{
-		result = malloc(sizeof(char) * 12);
-		ft_strlcpy(result, "-2147483648", 12);
-	}
+	result = (char *)malloc(sizeof(char ) * 2);
+	result[0] = '0';
+	result[1] = '\0';
 	return (result);
 }
