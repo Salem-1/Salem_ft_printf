@@ -6,31 +6,33 @@
 /*   By: ahsalem <ahsalem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 22:13:36 by ahsalem           #+#    #+#             */
-/*   Updated: 2022/06/06 15:51:17 by ahsalem          ###   ########.fr       */
+/*   Updated: 2022/06/06 16:26:24 by ahsalem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-static int	print_percent()
+
+static int	ft_putchar(const char *s);
+
+static int	print_percent(void)
 {
-	int a;
+	int	a;
 
 	a = '%';
 	write(1, &a, 1);
 	return (1);
 }
+
 int	ft_printf(const char *s, ...)
 {
-	int result;
-	result = 1;	
-	va_list ptr;
-	int	i;
-	int	len;
-	
+	va_list	ptr;
+	int		i;
+	int		len;
+
 	i = 0;
 	len = 0;
-    va_start( ptr, s);
-	while(s[i])
+	va_start(ptr, s);
+	while (s[i])
 	{
 		if (s[i] == '%')
 		{
@@ -39,17 +41,19 @@ int	ft_printf(const char *s, ...)
 				len += (print_percent());
 			else
 				len += param_checker(&s[i], va_arg(ptr, void *));
-		
 		}
 		else
-		{
-			write(1, &s[i], 1);
-			len++;
-		}
+			len += ft_putchar(&s[i]);
 		if (!s[i + 1])
-				break;
+			break ;
 		i++;
 	}
 	va_end(ptr);
 	return (len);
+}
+
+static int	ft_putchar(const char *s)
+{
+	write(1, s, 1);
+	return (1);
 }

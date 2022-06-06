@@ -6,7 +6,7 @@
 /*   By: ahsalem <ahsalem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 07:53:14 by ahsalem           #+#    #+#             */
-/*   Updated: 2022/06/06 14:26:30 by ahsalem          ###   ########.fr       */
+/*   Updated: 2022/06/06 16:33:31 by ahsalem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ static int	sixteen_pow(unsigned int c)
 {
 	unsigned int	i;
 	unsigned int	result;
-
+	
 	i = 0;
 	result = 1;
 	while (i < (c - 1))
@@ -120,12 +120,3 @@ static char	*specials(unsigned int n, int flag)
 		result = ft_strdup("ffffffff");
 	return (result);
 }
-/*
-	 else if (n == LONG_MAX)
-	 {
-	 	if (flag == 1)
-	 		result = ft_strdup("7FFFFFFFFFFFFFFF");
-	 	else
-			result = ft_strdup("7fffffffffffffff");
-	 }
-	*/

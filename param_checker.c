@@ -6,20 +6,17 @@
 /*   By: ahsalem <ahsalem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 19:53:17 by ahsalem           #+#    #+#             */
-/*   Updated: 2022/06/06 15:43:01 by ahsalem          ###   ########.fr       */
+/*   Updated: 2022/06/06 16:36:52 by ahsalem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-// static int	print_percent();
 static int	print_char(char c);
-static int print_string(char * arg);
+static int	print_string(char *arg);
 
-int param_checker(const char *s, void *arg)
+int	param_checker(const char *s, void *arg)
 {
-	// if (*s == '%')
-	// 	return (print_percent());
 	if (*s == 'c')
 		return (print_char((char)arg));
 	else if (*s == 'i')
@@ -27,7 +24,7 @@ int param_checker(const char *s, void *arg)
 	else if (*s == 'd')
 		return (print_digit((signed int)arg));
 	else if (*s == 's')
-		return(print_string((char *)arg));
+		return (print_string((char *)arg));
 	else if (*s == 'u')
 		return (print_unsigned((unsigned int)arg));
 	else if (*s == 'x')
@@ -39,26 +36,16 @@ int param_checker(const char *s, void *arg)
 	return (0);
 }
 
-static int print_string(char * arg)
+static int	print_string(char *arg)
 {
 	if (!arg)
 	{
 		write(1, "(null)", 6);
 		return (6);
 	}
-
 	ft_putstr(arg);
-	return((int)ft_strlen(arg));
+	return ((int)ft_strlen(arg));
 }
-
-// static int	print_percent()
-// {
-// 	int a;
-
-// 	a = '%';
-// 	write(1, &a, 1);
-// 	return (1);
-// }
 
 static int	print_char(char c)
 {

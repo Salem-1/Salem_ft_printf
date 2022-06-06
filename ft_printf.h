@@ -6,17 +6,17 @@
 /*   By: ahsalem <ahsalem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 22:17:52 by ahsalem           #+#    #+#             */
-/*   Updated: 2022/06/06 15:09:10 by ahsalem          ###   ########.fr       */
+/*   Updated: 2022/06/06 16:29:23 by ahsalem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
-#include "libft/libft.h"
-#include <stdarg.h>
-#include <stdio.h> //delete before submission
+# include "libft/libft.h"
+# include <stdarg.h>
+# include <stdio.h> //delete before submission
 
-int		ft_printf(const char *, ...);
+int		ft_printf(const char *s, ...);
 int		param_checker(const char *s, void *arg);
 int		print_int(int n);
 int		print_digit(signed int n);
