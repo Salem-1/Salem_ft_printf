@@ -6,7 +6,7 @@
 /*   By: ahsalem <ahsalem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 22:47:36 by ahsalem           #+#    #+#             */
-/*   Updated: 2022/06/06 10:07:54 by ahsalem          ###   ########.fr       */
+/*   Updated: 2022/06/06 20:39:46 by ahsalem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 
 static signed int	num_order(signed int n);
 static signed int	ten_pow(signed int c);
-static char	*specials(signed int c);
-static char	*str_result(signed int pow, signed int i, char *result, signed int n);
+static char			*specials(signed int c);
+static char			*str_result(signed int pow,
+						signed int i, char *result, signed int n);
 
 char	*ft_signed_itoa(signed int n)
 {
 	signed int		i;
-	char	*result;
+	char			*result;
 	signed int		temp;
 	signed int		pow;
 
@@ -43,7 +44,8 @@ char	*ft_signed_itoa(signed int n)
 	return (str_result(pow, i, result, n));
 }
 
-static char	*str_result(signed int pow, signed int i, char *result, signed int n)
+static char	*str_result(signed int pow,
+			signed int i, char *result, signed int n)
 {
 	while (pow > 0)
 	{

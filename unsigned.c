@@ -6,7 +6,7 @@
 /*   By: ahsalem <ahsalem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 20:55:01 by ahsalem           #+#    #+#             */
-/*   Updated: 2022/06/06 12:00:30 by ahsalem          ###   ########.fr       */
+/*   Updated: 2022/06/06 20:42:48 by ahsalem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,16 @@
 
 static unsigned int	num_order(unsigned int n);
 static unsigned int	ten_pow(unsigned int c);
-static char	*specials(unsigned int n);
-static char	*str_result(unsigned int pow, unsigned int i, char *result, unsigned int n);
+static char			*specials(unsigned int n);
+static char			*str_result(unsigned int pow,
+						unsigned int i, char *result, unsigned int n);
 
 char	*ft_unsigned_itoa(unsigned int n)
 {
-	unsigned  int		i;
-	char	*result;
-	unsigned int		temp;
-	unsigned int		pow;
+	unsigned int	i;
+	char			*result;
+	unsigned int	temp;
+	unsigned int	pow;
 
 	temp = 1;
 	i = 0;
@@ -37,7 +38,8 @@ char	*ft_unsigned_itoa(unsigned int n)
 	return (str_result(pow, i, result, n));
 }
 
-static char	*str_result(unsigned int pow, unsigned int i, char *result, unsigned int n)
+static char	*str_result(unsigned int pow,
+						unsigned int i, char *result, unsigned int n)
 {
 	while (pow > 0)
 	{
@@ -80,9 +82,10 @@ static unsigned int	ten_pow(unsigned int c)
 static char	*specials(unsigned int n)
 {
 	char	*result;
+
 	if (n == 0)
 	{
-	result = ft_strdup("0");
+		result = ft_strdup("0");
 	}
 	else
 	{

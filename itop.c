@@ -6,12 +6,11 @@
 /*   By: ahsalem <ahsalem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 07:53:14 by ahsalem           #+#    #+#             */
-/*   Updated: 2022/06/06 16:35:02 by ahsalem          ###   ########.fr       */
+/*   Updated: 2022/06/06 21:12:52 by ahsalem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <limits.h>
 
 static int				num_order(unsigned long n);
 static unsigned long	sixteen_pow(unsigned long c);
